@@ -1,7 +1,8 @@
 ---
 - name: "Deploy E-Commerce website"
   hosts: localhost
-  become: root
+  become: yes
+  become_user: root
   tasks:
     - name: "Install firewall daemon"
       yum:
@@ -30,6 +31,7 @@
         port: 3306/tcp
         permanent: yes
         state: enabled
+        immediate: yes
 
     - name: "Install PyMySQL"
       pip:
@@ -51,7 +53,7 @@
 
     - name: "Install httpd, php and php-mysql daemon"
       yum:
-        name: 
+        name:
         - httpd
         - php
         - php-mysql
@@ -62,9 +64,7 @@
         port: 80/tcp
         permanent: yes
         state: enabled
-
-    - name: "Reload firewall"
-      shell: firewall-cmd --reload
+        immediate: yes
 
     - name: "Ensure httpd.conf file points to index.php"
       lineinfile:
@@ -84,9 +84,14 @@
         repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
         dest: /var/www/html/
         version: master
+        force: yes
 
     - name: "Run SQL queries against a database"
-      shell: mysql < /var/www/html/assets/db-load-script.sql
+      mysql_db:
+        name: ecomdb
+        state: import
+        target: /var/www/html/assets/db-load-script.sql
+      ignore_errors: yes
 
     - name: "Modify database connection host"
       lineinfile:
@@ -96,9 +101,12 @@
         backrefs: yes
 
     - name: "Test httpd webhost"
-      command: curl http://localhost
+      get_url:
+        url: http://localhost
+        dest: ~/get_url_output.txt
+        mode: '644'
       register: webhost_output
 
     - name: "Print return code"
       debug:
-        msg: "{{ webhost_output.rc }}"
+        msg: "{{ webhost_output.status_code }}"
