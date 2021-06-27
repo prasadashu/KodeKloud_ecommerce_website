@@ -45,6 +45,7 @@
         state: present
 
     - name: "Create a user for the database ecomdb"
+      no_log: yes
       mysql_user:
         name: ecomuser
         password: ecompassword
