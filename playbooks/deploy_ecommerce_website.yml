@@ -5,7 +5,7 @@
   become_user: root
   tasks:
     - name: "Install firewall daemon"
-      yum:
+      package:
         name: firewalld
         state: present
 
@@ -16,7 +16,7 @@
         state: started
 
     - name: "Install MariaDB server"
-      yum:
+      package:
         name: mariadb-server
         state: present
 
@@ -53,7 +53,7 @@
         state: present
 
     - name: "Install httpd, php and php-mysql daemon"
-      yum:
+      package:
         name: ['httpd', 'php', 'php-mysql']
         state: installed
 
