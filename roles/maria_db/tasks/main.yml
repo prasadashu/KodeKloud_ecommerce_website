@@ -9,17 +9,17 @@
     enabled: yes
     state: started
 
-- name: "Create ecomdb database"
+- name: "Create database"
   mysql_db:
-    name: ecomdb
+    name: "{{ db_name }}"
     config_file: /etc/my.cnf
     login_unix_socket: /var/lib/mysql/mysql.sock
     state: present
 
-- name: "Create a user for the database ecomdb"
+- name: "Create a user for the database"
   no_log: yes
   mysql_user:
-    name: ecomuser
-    password: ecompassword
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
     priv: "*.*:ALL"
     state: present

@@ -7,7 +7,7 @@
 
 - name: "Run SQL queries against a database"
   mysql_db:
-    name: ecomdb
+    name: "{{ db_name }}"
     state: import
     target: /var/www/html/assets/db-load-script.sql
   ignore_errors: yes
