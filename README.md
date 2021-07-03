@@ -3,12 +3,15 @@ KodeKloud exercise to deploy website using Ansible playbook.
 
 ## How to run the playbook?
 - Install Ansible in RedHat based distros.
+
 `sudo yum install -y ansible`
 
 - Clone this repo.
+
 `git clone -b ansible_roles https://github.com/prasadashu/KodeKloud_ecommerce_website.git`
 
 - Run the playbook.
+
 `ansible-playbook deploy_ecommerce_website.yml -i inventory/inventory.txt --extra-vars "{'host':'db_web_server'}"`
 
 ## Repository details
