@@ -8,4 +8,4 @@ KodeKloud exercise to deploy website using Ansible playbook.
 - Refer to the inventory file under `inventory` directory.
 
 ## 2. Run Ansible playbook against the inventory file
-`ansible-playbook deploy_ecommerce_website.yml -i inventory.txt --extra-vars "{'host':'db_web_server'}"`
+`ansible-playbook deploy_ecommerce_website.yml -i inventory/inventory.txt --extra-vars "{'host':'db_web_server'}"`
