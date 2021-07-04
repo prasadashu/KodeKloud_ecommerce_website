@@ -1,3 +1,4 @@
+---
 - name: "Install firewall daemon"
   package:
     name: firewalld
