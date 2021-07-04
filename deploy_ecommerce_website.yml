@@ -1,0 +1,11 @@
+---
+- name: "Deploy E-Commerce website"
+  hosts: "{{ host }}"
+  become: yes
+  become_user: root
+  tasks:
+    - include: tasks/firewall_setup.yml
+    - include: tasks/python.yml
+    - include: tasks/maria_db.yml
+    - include: tasks/httpd_web.yml
+    - include: tasks/post_setup.yml
