@@ -30,7 +30,7 @@ KodeKloud exercise to deploy website using Ansible playbook.
 
 ### 4. Adding the tasks to the master playbook
 - Instead of adding a module for each task, we will use the `include` tag to include the respective tasks.
-- The roles will be listed sequentially in run order under `roles` tag.
+- The tasks will be listed sequentially in run order using the `include` tag.
 
 ### 5. Run Ansible playbook against the inventory file
 `ansible-playbook deploy_ecommerce_website.yml -i inventory/inventory.txt --extra-vars "{'host':'db_web_server'}"`
