@@ -28,4 +28,4 @@
 
 - name: "Print return code"
   custom_debug:
-    msg: "{{ webhost_output.status_code }}"
+    debug_msg: "{{ webhost_output.status_code }}"

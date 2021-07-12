@@ -9,19 +9,19 @@ def custom_debug_module():
     
     # Define the fields which will act as the parameters for the Custom Module
     fields = {
-        "msg": {"required": True, "type": 'str'}
+        "debug_msg": {"required": True, "type": 'str'}
     }
 
     # Instantiate the module
     module = AnsibleModule(argument_spec = fields)
 
-    # Get the 'msg' parameter value
-    msg = module.params['msg']
+    # Get the 'debug_msg' parameter value
+    debug_msg = module.params['debug_msg']
 
     # Print the output
     try:
         # Successful exit of module
-        module.exit_json(msg = str(datetime.now().strftime('%c')) + " - " + str(msg))
+        module.exit_json(changed = True, msg = str(datetime.now().strftime('%c')) + " - " + str(debug_msg))
         
     except Exception as exception:
         # Failed exit of module
