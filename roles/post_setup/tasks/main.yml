@@ -27,5 +27,5 @@
   register: webhost_output
 
 - name: "Print return code"
-  debug:
-    msg: "{{ webhost_output.status_code }}"
+  custom_debug:
+    debug_msg: "{{ webhost_output.status_code }}"
