@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 from ansible.module_utils.basic import AnsibleModule
+from datetime import datetime
 import json
-import time
 
 def custom_debug_module():
     """Function to define the Ansible Custom Module"""
@@ -21,7 +21,7 @@ def custom_debug_module():
     # Print the output
     try:
         # Successful exit of module
-        module.exit_json(changed = True, msg = "{} - {}".format(time.now(), debug_msg))
+        module.exit_json(changed = True, msg = "{} - {}".format(datetime.now().strftime('%c'), debug_msg))
         
     except Exception as exception:
         # Failed exit of module
