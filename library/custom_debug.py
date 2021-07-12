@@ -21,7 +21,7 @@ def custom_debug_module():
     # Print the output
     try:
         # Successful exit of module
-        module.exit_json(changed = True, msg = "{} - {}".format(datetime.now().strftime('%c'), debug_msg))
+        module.exit_json(changed = True, msg = str(datetime.now().strftime('%c')) + " - " + str(debug_msg))
         
     except Exception as exception:
         # Failed exit of module
